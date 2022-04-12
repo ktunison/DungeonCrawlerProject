@@ -25,24 +25,26 @@ public class Player : MonoBehaviour
     void move()
     {
         Vector3 addPosition = Vector3.zero;
-        Vector3 up = new Vector3(0, 0, 1);
-        Vector3 down = new Vector3(0, 0, -1);
 
+        //left
         if (Input.GetKey("a"))
         {
             addPosition += Vector3.left * Time.deltaTime * speed;
         }
+        //right
         if (Input.GetKey("d"))
         {
             addPosition += Vector3.right * Time.deltaTime * speed;
         }
+        //up
         if (Input.GetKey("w"))
         {
-            addPosition += up * Time.deltaTime * speed;
+            addPosition += new Vector3(0, 0, 1) * Time.deltaTime * speed;
         }
+        //down
         if (Input.GetKey("s"))
         {
-            addPosition += down * Time.deltaTime * speed;
+            addPosition += new Vector3(0, 0, -1) * Time.deltaTime * speed;
         }
 
         GetComponent<Transform>().position += addPosition;
@@ -57,6 +59,25 @@ public class Player : MonoBehaviour
         {
             this.enabled = false;
         }
+        StartCoroutine(Blink());
+    }
+
+    public IEnumerator Blink()
+    {
+        for (int index = 0; index < 30; index++)
+        {
+            if (index % 2 == 0)
+            {
+                GetComponent<MeshRenderer>().enabled = false;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().enabled = true;
+            }
+            yield return new WaitForSeconds(.1f);
+        }
+
+        GetComponent<MeshRenderer>().enabled = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,6 +87,7 @@ public class Player : MonoBehaviour
             if (health > 0)
             {
                 health--;
+                StartCoroutine(Blink());
             }
             else
             {
