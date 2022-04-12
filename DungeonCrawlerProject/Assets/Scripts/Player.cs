@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     private Vector3 PlayerOrigin;
     public float speed = 3;
-
+    public float health = 3;
+    public float lives = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -42,5 +44,35 @@ public class Player : MonoBehaviour
         }
 
         GetComponent<Transform>().position += addPosition;
+    }
+
+    private void respawn()
+    {
+        transform.position = PlayerOrigin;
+        lives--;
+
+        if (lives <= 0)
+        {
+            this.enabled = false;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            if (health > 0)
+            {
+                health--;
+            }
+            else
+            {
+                respawn();
+            }
+        }
+        if (other.tag == "switchScene")
+        {
+            SceneSwitch.instance.switchScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
