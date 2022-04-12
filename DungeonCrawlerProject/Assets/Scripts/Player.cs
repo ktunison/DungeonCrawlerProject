@@ -25,24 +25,26 @@ public class Player : MonoBehaviour
     void move()
     {
         Vector3 addPosition = Vector3.zero;
-        Vector3 up = new Vector3(0, 0, 1);
-        Vector3 down = new Vector3(0, 0, -1);
 
+        //left
         if (Input.GetKey("a"))
         {
             addPosition += Vector3.left * Time.deltaTime * speed;
         }
+        //right
         if (Input.GetKey("d"))
         {
             addPosition += Vector3.right * Time.deltaTime * speed;
         }
+        //up
         if (Input.GetKey("w"))
         {
-            addPosition += up * Time.deltaTime * speed;
+            addPosition += new Vector3(0, 0, 1) * Time.deltaTime * speed;
         }
+        //down
         if (Input.GetKey("s"))
         {
-            addPosition += down * Time.deltaTime * speed;
+            addPosition += new Vector3(0, 0, -1) * Time.deltaTime * speed;
         }
 
         GetComponent<Transform>().position += addPosition;
