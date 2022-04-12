@@ -87,6 +87,7 @@ public class Player : MonoBehaviour
             if (health > 0)
             {
                 health--;
+                StartCoroutine(Blink());
             }
             else
             {
