@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     void move()
     {
         Vector3 addPosition = Vector3.zero;
+        Vector3 up = new Vector3(0, 0, 1);
+        Vector3 down = new Vector3(0, 0, -1);
 
         if (Input.GetKey("a"))
         {
@@ -36,11 +38,11 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKey("w"))
         {
-            addPosition += Vector3.up * Time.deltaTime * speed;
+            addPosition += up * Time.deltaTime * speed;
         }
         if (Input.GetKey("s"))
         {
-            addPosition += Vector3.down * Time.deltaTime * speed;
+            addPosition += down * Time.deltaTime * speed;
         }
 
         GetComponent<Transform>().position += addPosition;
@@ -70,6 +72,7 @@ public class Player : MonoBehaviour
                 respawn();
             }
         }
+
         if (other.tag == "switchScene")
         {
             SceneSwitch.instance.switchScene(SceneManager.GetActiveScene().buildIndex + 1);
