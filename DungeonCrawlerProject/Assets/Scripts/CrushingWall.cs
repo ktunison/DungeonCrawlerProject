@@ -2,21 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMove : MonoBehaviour
+public class CrushingWall : MonoBehaviour
 {
+    private Vector3 OriginPos;
     [SerializeField]
     private bool goingLeft;
-    public float speed = 2;
-    private Vector3 OriginPos;
-    private Vector3 movedLocation;
-    public float unitsToMove = 5f;
+    public float speed = 2f;
+    public float waitTimer = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
         OriginPos = this.transform.position;
-        movedLocation = this.transform.position;
-        movedLocation.x += unitsToMove;
     }
 
     // Update is called once per frame
@@ -40,29 +37,24 @@ public class EnemyMove : MonoBehaviour
         }
         else
         {
-            if (transform.position.x >= movedLocation.x)
-            {
-                goingLeft = true;
-            }
-            else
-            {
-                transform.position += Vector3.right * Time.deltaTime * speed;
-            }
+            transform.position += Vector3.right * Time.deltaTime * speed;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Wall")
+        if (other.tag == "wall")
         {
-            if (goingLeft == true)
-            {
-                goingLeft = false;
-            }
-            else
-            {
-                goingLeft = true;
-            }
+            StartCoroutine(Wait());
+            goingLeft = false;
         }
+    }
+
+    IEnumerator Wait()
+    {
+        float CrushWallSpeed = speed;
+        speed = 0;
+        yield return new WaitForSeconds(waitTimer);
+        speed = CrushWallSpeed;
     }
 }
