@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     public bool goingLeft;
-    public float speed;
+    public float speed = 2;
     private Vector3 Origin;
     private Vector3 movedLocation;
     public float unitsToMove = 5f;
@@ -28,6 +28,17 @@ public class EnemyMove : MonoBehaviour
     {
         if (goingLeft)
         {
+            if (transform.position.x <= Origin.x)
+            {
+                goingLeft = false;
+            }
+            else
+            {
+                transform.position += Vector3.left * Time.deltaTime * speed;
+            }
+        }
+        else
+        {
             if (transform.position.x >= movedLocation.x)
             {
                 goingLeft = true;
@@ -35,17 +46,6 @@ public class EnemyMove : MonoBehaviour
             else
             {
                 transform.position += Vector3.right * Time.deltaTime * speed;
-            }
-        }
-        else
-        {
-            if (transform.position.x <= movedLocation.x)
-            {
-                goingLeft = false;
-            }
-            else
-            {
-                transform.position += Vector3.left * Time.deltaTime * speed;
             }
         }
     }
