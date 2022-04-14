@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     public float health = 3;
     public float lives = 3;
 
+    private int KeyCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,6 +100,11 @@ public class Player : MonoBehaviour
         if (other.tag == "switchScene")
         {
             SceneSwitch.instance.switchScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
+        if (other.tag == "Door")
+        {
+
         }
     }
 }
