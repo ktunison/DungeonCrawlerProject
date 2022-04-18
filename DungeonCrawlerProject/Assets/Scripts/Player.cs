@@ -84,7 +84,13 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == "Key")
+        {
+            KeyCount++;
+            other.gameObject.SetActive(false);
+        }
+
+        if (other.tag == "Enemy" || other.tag == "Boss")
         {
             if (health > 0)
             {
@@ -104,7 +110,11 @@ public class Player : MonoBehaviour
 
         if (other.tag == "Door")
         {
+            if (KeyCount >= other.gameObject.GetComponent<Door>().keysNeeded)
+            {
+                KeyCount -= other.gameObject.GetComponent<Door>().keysNeeded;
 
+            }
         }
     }
 }
