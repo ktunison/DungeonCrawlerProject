@@ -5,8 +5,9 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     public float Speed;
-    private float BossHealth = 4;
+    public float BossHealth = 4;
     private Vector3 Direction;
+    public Vector3 location;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class Boss : MonoBehaviour
     void Update()
     {
         moveBoss();
+        location = transform.position;
     }
 
     private void moveBoss()
@@ -37,18 +39,20 @@ public class Boss : MonoBehaviour
         {
             Direction.z *= -1;
         }
-    }
 
-    public void DamageBoss()
-    {
-        if (BossHealth <= 0)
+        if (other.tag == "bossDamageable")
         {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            BossHealth--;
-            StartCoroutine(Blink());
+            if (BossHealth == 1)
+            {
+                BossHealth--;
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                BossHealth--;
+                StartCoroutine(Blink());
+            }
+            Destroy(other.gameObject);
         }
     }
 

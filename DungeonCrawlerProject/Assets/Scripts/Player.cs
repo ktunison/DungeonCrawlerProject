@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
     {
         transform.position = PlayerOrigin;
         lives--;
+        health = 3;
 
         if (lives <= 0)
         {
@@ -93,12 +94,12 @@ public class Player : MonoBehaviour
 
         if (other.tag == "Enemy" || other.tag == "Boss")
         {
-            if (health > 0)
+            if (health > 1)
             {
                 health--;
                 StartCoroutine(Blink());
             }
-            else
+            else if (health == 0)
             {
                 respawn();
             }

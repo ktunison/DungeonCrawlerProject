@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class BossDamageable : Boss
 {
+    public GameObject bossPrefab;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            DamageBoss();
-            Destroy(this.gameObject);
+            transform.position = bossPrefab.transform.position;
         }
     }
 }

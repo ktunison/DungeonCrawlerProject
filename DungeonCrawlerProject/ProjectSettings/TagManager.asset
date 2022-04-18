@@ -11,6 +11,8 @@ TagManager:
   - Wall
   - VerticalWall
   - HorizontalWall
+  - Boss
+  - bossDamageable
   layers:
   - Default
   - TransparentFX
