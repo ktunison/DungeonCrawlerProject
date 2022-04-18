@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
             if (KeyCount >= other.gameObject.GetComponent<Door>().keysNeeded)
             {
                 KeyCount -= other.gameObject.GetComponent<Door>().keysNeeded;
-
+                other.gameObject.SetActive(false);
             }
         }
     }
