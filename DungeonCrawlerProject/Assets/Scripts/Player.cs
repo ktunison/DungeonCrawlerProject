@@ -88,6 +88,11 @@ public class Player : MonoBehaviour
                 respawn();
             }
         }
+        
+        if (other.tag == "CrushingWall")
+        {
+            respawn();
+        }
 
         if (other.tag == "switchScene")
         {

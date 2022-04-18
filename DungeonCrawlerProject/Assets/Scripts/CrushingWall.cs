@@ -5,8 +5,7 @@ using UnityEngine;
 public class CrushingWall : MonoBehaviour
 {
     private Vector3 OriginPos;
-    [SerializeField]
-    private bool goingLeft;
+    public bool goingRight;
     public float speed = 2f;
     public float waitTimer = 2f;
 
@@ -24,29 +23,30 @@ public class CrushingWall : MonoBehaviour
 
     private void move()
     {
-        if (goingLeft)
+        if (goingRight)
         {
-            if (transform.position.x <= OriginPos.x)
+            if (transform.position.x == OriginPos.x)
             {
-                goingLeft = false;
+                StartCoroutine(Wait());
+                goingRight = false;
             }
             else
             {
-                transform.position += Vector3.left * Time.deltaTime * speed;
+                transform.position += Vector3.right * Time.deltaTime * speed;
             }
         }
         else
         {
-            transform.position += Vector3.right * Time.deltaTime * speed;
+            transform.position += Vector3.left * Time.deltaTime * speed;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "wall")
+        if (other.tag == "Wall")
         {
             StartCoroutine(Wait());
-            goingLeft = false;
+            goingRight = !goingRight;
         }
     }
 
