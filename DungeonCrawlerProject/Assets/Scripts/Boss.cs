@@ -5,7 +5,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     public float Speed;
-    private float BossHealth = 3;
+    private float BossHealth = 4;
     private Vector3 Direction;
 
     // Start is called before the first frame update
@@ -37,5 +37,36 @@ public class Boss : MonoBehaviour
         {
             Direction.z *= -1;
         }
+    }
+
+    public void DamageBoss()
+    {
+        if (BossHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            BossHealth--;
+            StartCoroutine(Blink());
+        }
+    }
+
+    public IEnumerator Blink()
+    {
+        for (int index = 0; index < 30; index++)
+        {
+            if (index % 2 == 0)
+            {
+                GetComponent<MeshRenderer>().enabled = false;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().enabled = true;
+            }
+            yield return new WaitForSeconds(.1f);
+        }
+
+        GetComponent<MeshRenderer>().enabled = true;
     }
 }
