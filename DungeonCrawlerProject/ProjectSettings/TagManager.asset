@@ -9,6 +9,8 @@ TagManager:
   - Key
   - Laser
   - Wall
+  - VerticalWall
+  - HorizontalWall
   layers:
   - Default
   - TransparentFX

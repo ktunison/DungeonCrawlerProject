@@ -226,6 +226,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1349408753835271055, guid: e106dd9c96cb2604a8b5644717fb7b57, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2868867997873150711, guid: e106dd9c96cb2604a8b5644717fb7b57, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -273,6 +277,10 @@ PrefabInstance:
     - target: {fileID: 5049397938584402214, guid: e106dd9c96cb2604a8b5644717fb7b57, type: 3}
       propertyPath: m_Name
       value: outside wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049397938584402214, guid: e106dd9c96cb2604a8b5644717fb7b57, type: 3}
+      propertyPath: m_TagString
+      value: HorizontalWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e106dd9c96cb2604a8b5644717fb7b57, type: 3}
@@ -359,6 +367,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &823994264 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4797669358792458493, guid: 87ac3edc54a7185459598ecf1f127515, type: 3}
+  m_PrefabInstance: {fileID: 1686354696}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &823994270
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823994264}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
 --- !u!1001 &931325348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -366,6 +395,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 325341275102933595, guid: eb0fb828f4014434fbde97f9c5e440fc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3596559744641796899, guid: eb0fb828f4014434fbde97f9c5e440fc, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -414,6 +447,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: outside wall 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5776667631524686066, guid: eb0fb828f4014434fbde97f9c5e440fc, type: 3}
+      propertyPath: m_TagString
+      value: VerticalWall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb0fb828f4014434fbde97f9c5e440fc, type: 3}
 --- !u!1001 &1129272769
@@ -423,6 +460,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1349408753835271055, guid: e106dd9c96cb2604a8b5644717fb7b57, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2868867997873150711, guid: e106dd9c96cb2604a8b5644717fb7b57, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -471,6 +512,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: outside wall (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5049397938584402214, guid: e106dd9c96cb2604a8b5644717fb7b57, type: 3}
+      propertyPath: m_TagString
+      value: HorizontalWall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e106dd9c96cb2604a8b5644717fb7b57, type: 3}
 --- !u!1001 &1304158881
@@ -480,6 +525,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 325341275102933595, guid: eb0fb828f4014434fbde97f9c5e440fc, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3596559744641796899, guid: eb0fb828f4014434fbde97f9c5e440fc, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -527,6 +576,10 @@ PrefabInstance:
     - target: {fileID: 5776667631524686066, guid: eb0fb828f4014434fbde97f9c5e440fc, type: 3}
       propertyPath: m_Name
       value: outside wall 2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5776667631524686066, guid: eb0fb828f4014434fbde97f9c5e440fc, type: 3}
+      propertyPath: m_TagString
+      value: VerticalWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb0fb828f4014434fbde97f9c5e440fc, type: 3}
@@ -581,9 +634,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4797669358792458492, guid: 87ac3edc54a7185459598ecf1f127515, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4797669358792458493, guid: 87ac3edc54a7185459598ecf1f127515, type: 3}
       propertyPath: m_Name
       value: boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224767414933493161, guid: 87ac3edc54a7185459598ecf1f127515, type: 3}
+      propertyPath: Speed
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87ac3edc54a7185459598ecf1f127515, type: 3}
