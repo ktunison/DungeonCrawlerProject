@@ -21,4 +21,12 @@ public class Laser : MonoBehaviour
             transform.position += speed * Vector3.right * Time.deltaTime;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Wall")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
