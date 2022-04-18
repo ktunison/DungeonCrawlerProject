@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public float speed = 3;
     public float health = 3;
     public float lives = 3;
+    public float stunTimer = 2f;
 
     private int KeyCount = 0;
     private int CoinCount = 0;
@@ -66,24 +67,6 @@ public class Player : MonoBehaviour
         StartCoroutine(Blink());
     }
 
-    public IEnumerator Blink()
-    {
-        for (int index = 0; index < 30; index++)
-        {
-            if (index % 2 == 0)
-            {
-                GetComponent<MeshRenderer>().enabled = false;
-            }
-            else
-            {
-                GetComponent<MeshRenderer>().enabled = true;
-            }
-            yield return new WaitForSeconds(.1f);
-        }
-
-        GetComponent<MeshRenderer>().enabled = true;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Key")
@@ -99,8 +82,9 @@ public class Player : MonoBehaviour
                 health--;
                 StartCoroutine(Blink());
             }
-            else if (health == 0)
+            else if (health == 1)
             {
+                health--;
                 respawn();
             }
         }
@@ -118,5 +102,36 @@ public class Player : MonoBehaviour
                 other.gameObject.SetActive(false);
             }
         }
+
+        if (other.tag == "Laser")
+        {
+            StartCoroutine(Stun());
+        }
+    }
+
+    IEnumerator Blink()
+    {
+        for (int index = 0; index < 30; index++)
+        {
+            if (index % 2 == 0)
+            {
+                GetComponent<MeshRenderer>().enabled = false;
+            }
+            else
+            {
+                GetComponent<MeshRenderer>().enabled = true;
+            }
+            yield return new WaitForSeconds(.1f);
+        }
+
+        GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    IEnumerator Stun()
+    {
+        float currentPlayerSpeed = speed;
+        speed = 0;
+        yield return new WaitForSeconds(stunTimer);
+        speed = currentPlayerSpeed;
     }
 }
