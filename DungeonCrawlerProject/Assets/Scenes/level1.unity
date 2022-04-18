@@ -1029,6 +1029,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7192998622579806419, guid: e4ce99c84c231404aa8988598f5177d2, type: 3}
+      propertyPath: goingLeft
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4725007032702013145, guid: e4ce99c84c231404aa8988598f5177d2, type: 3}
       propertyPath: m_Name
       value: laser spawner (3)
@@ -1086,6 +1090,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7192998622579806419, guid: e4ce99c84c231404aa8988598f5177d2, type: 3}
+      propertyPath: goingLeft
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4725007032702013145, guid: e4ce99c84c231404aa8988598f5177d2, type: 3}
       propertyPath: m_Name
       value: laser spawner (2)
