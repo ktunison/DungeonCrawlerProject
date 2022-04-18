@@ -50,6 +50,7 @@ public class Boss : MonoBehaviour
             else
             {
                 BossHealth--;
+                Speed += 2;
                 StartCoroutine(Blink());
             }
             Destroy(other.gameObject);
