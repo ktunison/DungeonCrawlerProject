@@ -13,6 +13,7 @@ TagManager:
   - HorizontalWall
   - Boss
   - bossDamageable
+  - switchScene
   layers:
   - Default
   - TransparentFX
