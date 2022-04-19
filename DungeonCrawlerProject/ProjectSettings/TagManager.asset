@@ -21,6 +21,8 @@ TagManager:
   - gameOverText
   - healthText
   - livesText
+  - winnerText
+  - winnerCube
   layers:
   - Default
   - TransparentFX

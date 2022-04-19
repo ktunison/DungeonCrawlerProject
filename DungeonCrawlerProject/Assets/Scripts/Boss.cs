@@ -8,6 +8,7 @@ public class Boss : MonoBehaviour
     public float BossHealth = 4;
     private Vector3 Direction;
     public Vector3 location;
+    public GameObject winnerCube;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +46,9 @@ public class Boss : MonoBehaviour
             if (BossHealth == 1)
             {
                 BossHealth--;
+                GameObject winner = Instantiate(winnerCube, transform.position, winnerCube.transform.rotation);
                 Destroy(this.gameObject);
+              
             }
             else
             {
@@ -54,6 +57,7 @@ public class Boss : MonoBehaviour
                 StartCoroutine(Blink());
             }
             Destroy(other.gameObject);
+            
         }
     }
 

@@ -19,15 +19,14 @@ public class Player : MonoBehaviour
     public Text gameOverText;
     public Text healthText;
     public Text keyText;
+    public Text winnerText;
+    
     // Start is called before the first frame update
     void Start()
     {
         PlayerOrigin = transform.position;
-        countText.text = "";
-        keyText.text = "";
-        livesText.text = "";
-        healthText.text = "" ;
         gameOverText.text = "";
+        winnerText.text = "";
         SetCountText();
         
     }
@@ -72,10 +71,12 @@ public class Player : MonoBehaviour
         keyText.text = "Keys:" + KeyCount.ToString();
         livesText.text = "Lives:" + lives.ToString();
         healthText.text = "Health:" + health.ToString();
+        
         if (lives <= 0)
         {
             gameOverText.text = "Game Over";
         }
+        
     }
     private void respawn()
     {
@@ -114,7 +115,13 @@ public class Player : MonoBehaviour
                 SetCountText();
             }
         }
-        
+        if (other.tag == "winnerCube")
+        { 
+          //other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
+          winnerText.text = "A Winner Is You";
+          SetCountText();
+        }
         if (other.tag == "CrushingWall")
         {
             respawn();
