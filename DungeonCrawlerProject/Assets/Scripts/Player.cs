@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     private Vector3 PlayerOrigin;
-    public float speed = 3;
+    public float speed = 1;
     public float health = 3;
     public float lives = 3;
     public float stunTimer = 2f;
