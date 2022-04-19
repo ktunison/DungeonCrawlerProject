@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
@@ -13,11 +14,22 @@ public class Player : MonoBehaviour
 
     private int KeyCount = 0;
     private int CoinCount = 0;
-
+    public Text countText;
+    public Text livesText;
+    public Text gameOverText;
+    public Text healthText;
+    public Text keyText;
     // Start is called before the first frame update
     void Start()
     {
         PlayerOrigin = transform.position;
+        countText.text = "";
+        keyText.text = "";
+        livesText.text = "";
+        healthText.text = "" ;
+        gameOverText.text = "";
+        SetCountText();
+        
     }
 
     // Update is called once per frame
@@ -53,7 +65,18 @@ public class Player : MonoBehaviour
 
         GetComponent<Transform>().position += addPosition;
     }
-
+    //UI Setup
+    void SetCountText()
+    {
+        countText.text = "Coins:" + CoinCount.ToString();
+        keyText.text = "Keys:" + KeyCount.ToString();
+        livesText.text = "Lives:" + lives.ToString();
+        healthText.text = "Health:" + health.ToString();
+        if (lives <= 0)
+        {
+            gameOverText.text = "Game Over";
+        }
+    }
     private void respawn()
     {
         transform.position = PlayerOrigin;
@@ -73,6 +96,7 @@ public class Player : MonoBehaviour
         {
             KeyCount++;
             other.gameObject.SetActive(false);
+            SetCountText();
         }
 
         if (other.tag == "Enemy" || other.tag == "Boss")
@@ -81,17 +105,20 @@ public class Player : MonoBehaviour
             {
                 health--;
                 StartCoroutine(Blink());
+                SetCountText();
             }
             else if (health == 1)
             {
                 health--;
                 respawn();
+                SetCountText();
             }
         }
         
         if (other.tag == "CrushingWall")
         {
             respawn();
+            SetCountText();
         }
 
         if (other.tag == "switchScene")
@@ -105,12 +132,20 @@ public class Player : MonoBehaviour
             {
                 KeyCount -= other.gameObject.GetComponent<Door>().keysNeeded;
                 other.gameObject.SetActive(false);
+                SetCountText();
             }
         }
 
         if (other.tag == "Laser")
         {
             StartCoroutine(Stun());
+        }
+       
+        if (other.tag == "Coin")
+        {
+            CoinCount++;
+            other.gameObject.SetActive(false);
+            SetCountText();
         }
     }
 

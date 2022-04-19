@@ -15,6 +15,12 @@ TagManager:
   - bossDamageable
   - switchScene
   - CrushingWall
+  - Coin
+  - keyText
+  - countText
+  - gameOverText
+  - healthText
+  - livesText
   layers:
   - Default
   - TransparentFX
